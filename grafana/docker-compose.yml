@@ -1,0 +1,22 @@
+version: "2"
+services:
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=grafana
+    ports:
+      - "3306:3306"
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_DATABASE_URL=mysql://root:root@mysql:3306/grafana
+      - GF_DATABASE_TYPE=mysql
+    links:
+      - mysql
+    depends_on:
+      - "mysql"
+
