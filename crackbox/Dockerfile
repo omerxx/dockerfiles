@@ -15,3 +15,5 @@ cd ~/src && git clone git://github.com/magnumripper/JohnTheRipper -b bleeding-ju
 # Build
 cd ~/src/john/src && ./configure && make -s clean && make -sj4
 
+# Symlink john
+ln -s ~/src/john/run/john /usr/local/bin/john
